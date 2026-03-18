@@ -5,15 +5,21 @@ import { Specialties } from "./pages/Specialties";
 import { Cases } from "./pages/Cases";
 import { Contact } from "./pages/Contact";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: Layout,
+      children: [
+        { index: true, Component: Home },
+        { path: "especialidades", Component: Specialties },
+        { path: "processos", Component: Cases },
+        { path: "contato", Component: Contact },
+      ],
+    },
+  ],
   {
-    path: "/",
-    Component: Layout,
-    children: [
-      { index: true, Component: Home },
-      { path: "especialidades", Component: Specialties },
-      { path: "processos", Component: Cases },
-      { path: "contato", Component: Contact },
-    ],
-  },
-]);
+    // Adicione o basename aqui (sem a barra final)
+    basename: "/Adminstra-o-Judicial",
+  }
+);
